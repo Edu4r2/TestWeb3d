@@ -14,17 +14,14 @@ import contentData from './data/content.json';
 import './index.css';
 
 function App() {
-    const [theme, setTheme] = useState('dark'); // Default dark
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme ? savedTheme : 'dark';
+    });
     const [activeModalId, setActiveModalId] = useState(null);
     const activeSection = useActiveSection();
 
     useEffect(() => {
-        // Check local storage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-
         // Load Fonts from Config
         const { typography } = contentData.config;
 
