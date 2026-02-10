@@ -4,6 +4,9 @@
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
+    /* --- PREVENIR SELECCIÓN GLOBAL --- */
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 :root {
@@ -75,6 +78,43 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     transition: background-color 0.4s ease, color 0.4s ease;
+
+    /* --- WEB SKITS / UI POLISH --- */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+}
+
+/* Permitir selección en inputs si existieran */
+input,
+textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* --- CUSTOM SCROLLBAR (GLOBAL) --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-body);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.2);
 }
 
 body.no-scroll {
@@ -99,6 +139,28 @@ body.no-scroll {
     overflow: hidden;
     transition: all 0.3s ease;
     margin-left: 20px;
+}
+
+/* --- MEJORAS WEB SKITS / UI --- */
+a,
+button,
+.indicator-dot,
+.dot {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+}
+
+/* Evitar que aparezca el "tooltip" de link o info en imágenes */
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+/* Permitir selección solo en áreas necesarias si existieran */
+.selectable-text {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .theme-btn:hover {
@@ -179,20 +241,24 @@ body.no-scroll {
     cursor: pointer;
 }
 
-.desktop-menu a {
+.desktop-menu a,
+.desktop-menu span {
     color: var(--nav-text-scrolled);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.9rem;
     text-transform: uppercase;
     transition: color 0.3s;
     position: relative;
+    cursor: pointer;
 }
 
-.nav-socials a {
+.nav-socials a,
+.nav-socials div {
     color: var(--nav-text-scrolled);
     font-size: 1.1rem;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .theme-btn {
@@ -207,7 +273,9 @@ body.no-scroll {
 /* 2. EXCEPCIÓN: Estado Transparente (Arriba) - SIEMPRE BLANCO (por el video) */
 .global-nav:not(.scrolled) .logo,
 .global-nav:not(.scrolled) .desktop-menu a,
+.global-nav:not(.scrolled) .desktop-menu span,
 .global-nav:not(.scrolled) .nav-socials a,
+.global-nav:not(.scrolled) .nav-socials div,
 .global-nav:not(.scrolled) .theme-btn {
     color: #ffffff !important;
 }
@@ -224,11 +292,14 @@ body.no-scroll {
 
 /* Hover Effects */
 .desktop-menu a:hover,
-.desktop-menu a.active {
+.desktop-menu span:hover,
+.desktop-menu a.active,
+.desktop-menu span.active {
     color: var(--accent) !important;
 }
 
-.desktop-menu a.active::after {
+.desktop-menu a.active::after,
+.desktop-menu span.active::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -323,7 +394,8 @@ body.no-scroll {
     pointer-events: all;
 }
 
-.mobile-menu a {
+.mobile-menu a,
+.mobile-menu div {
     font-size: 2rem;
     color: #ffffff;
     margin: 15px;
@@ -331,13 +403,15 @@ body.no-scroll {
     font-weight: 800;
     transform: translateY(20px);
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .mobile-menu.active a {
     transform: translateY(0);
 }
 
-.mobile-menu a.active {
+.mobile-menu a.active,
+.mobile-menu div.active {
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
 }
@@ -474,6 +548,7 @@ section {
     background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
     background-size: 200% auto;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientFlow 5s linear infinite;
 }
@@ -1030,9 +1105,10 @@ section {
     overflow-y: auto;
     border-radius: 24px;
     background: var(--bg-body) !important;
-    border: 1px solid var(--border-color);
-    /* Kept standard border */
-    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid var(--accent);
+    box-shadow:
+        0 0 30px rgba(215, 164, 55, 0.1),
+        0 50px 100px -20px rgba(0, 0, 0, 0.6);
     /* Remove generic border that might cause gaps */
 }
 
@@ -1458,6 +1534,7 @@ section {
         color: var(--text-muted);
         display: -webkit-box;
         -webkit-line-clamp: 4;
+        line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }

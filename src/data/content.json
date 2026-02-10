@@ -8,7 +8,7 @@
         },
         "theme": {
             "--bg-body": "#050505",
-            "--accent": "#d7a437",
+            "--accent": "#fbad18",
             "--text-main": "#ffffff",
             "--text-muted": "#cccccc",
             "--card-bg": "rgba(20, 20, 25, 0.9)",
@@ -18,7 +18,7 @@
     },
     "ui": {
         "navbar": {
-            "logo_text": "Edu4rt Store",
+            "logo_text": "Edu4rt Studios",
             "logo_img": "media/logo.png",
             "items": [
                 {

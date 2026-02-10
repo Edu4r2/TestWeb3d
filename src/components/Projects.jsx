@@ -148,9 +148,20 @@ export default function Projects({ featured, config, children }) {
                                 <div className="featured-text-col">
                                     <h3>{item.title}</h3>
                                     <p>{item.description}</p>
-                                    <a href={item.link || '#'} className="featured-btn">
+                                    <div
+                                        onClick={() => {
+                                            const target = item.link || '#';
+                                            if (target.startsWith('#')) {
+                                                document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+                                            } else {
+                                                window.open(target, '_blank');
+                                            }
+                                        }}
+                                        className="featured-btn"
+                                        style={{ cursor: 'pointer' }}
+                                    >
                                         {item.btn_text || 'Ver Más'}
-                                    </a>
+                                    </div>
                                 </div>
                                 <div className="featured-img-col">
                                     <img src={item.img} alt={item.title} />

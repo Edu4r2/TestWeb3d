@@ -46,6 +46,11 @@ function App() {
             document.documentElement.style.setProperty('--hero-font', typography.font_family);
         }
 
+        // 3. Load Global Colors (Accent)
+        if (contentData.config.theme && contentData.config.theme['--accent']) {
+            document.documentElement.style.setProperty('--accent', contentData.config.theme['--accent']);
+        }
+
     }, []);
 
     useEffect(() => {
@@ -90,12 +95,14 @@ function App() {
 
             <div id="side-indicators" className={`side-indicator ${activeSection === 'hero' ? 'hero-mode' : ''}`}>
                 {ui.navbar.items.map((item, index) => (
-                    <a
+                    <div
                         key={index}
-                        href={item.href}
+                        onClick={() => {
+                            document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                         className={`indicator-dot ${activeSection === item.href.substring(1) ? 'active' : ''}`}
                         aria-label={item.label}
-                    ></a>
+                    ></div>
                 ))}
             </div>
 

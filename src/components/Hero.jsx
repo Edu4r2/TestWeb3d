@@ -11,7 +11,20 @@ export default function Hero({ data }) {
             <div className="hero-content reveal-up">
                 <h1 id="hero-title" dangerouslySetInnerHTML={{ __html: data.title }}></h1>
                 <p id="hero-desc">{data.description}</p>
-                <a id="hero-btn" href={data.button_link} className="btn-glass">{data.button_text}</a>
+                <div
+                    id="hero-btn"
+                    onClick={() => {
+                        const target = data.button_link;
+                        if (target.startsWith('#')) {
+                            document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            window.open(target, '_blank');
+                        }
+                    }}
+                    className="btn-glass"
+                >
+                    {data.button_text}
+                </div>
             </div>
         </section>
     );

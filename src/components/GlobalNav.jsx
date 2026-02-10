@@ -25,21 +25,28 @@ export default function GlobalNav({ config, toggleTheme }) {
     return (
         <>
             <nav className={`global-nav ${scrolled ? 'scrolled' : ''}`}>
-                <a href="#" className="logo">
+                <div
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="logo"
+                    style={{ cursor: 'pointer' }}
+                >
                     <img id="nav-logo-img" src={navbar.logo_img} alt="Logo" className="logo-img" />
                     <span id="nav-logo-text">{navbar.logo_text}</span>
-                </a>
+                </div>
 
                 <div className="nav-right">
                     <div id="desktop-menu" className="desktop-menu">
                         {navbar.items.map((item, index) => (
-                            <a
+                            <span
                                 key={index}
-                                href={item.href}
+                                onClick={() => {
+                                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                                }}
                                 className={activeSection === item.href.substring(1) ? 'active' : ''}
+                                style={{ cursor: 'pointer' }}
                             >
                                 {item.label}
-                            </a>
+                            </span>
                         ))}
                     </div>
 
@@ -50,7 +57,13 @@ export default function GlobalNav({ config, toggleTheme }) {
 
                     <div id="nav-socials" className="nav-socials">
                         {navbar.socials.map((s, index) => (
-                            <a key={index} href={s.url} target="_blank"><i className={s.icon}></i></a>
+                            <div
+                                key={index}
+                                onClick={() => window.open(s.url, '_blank')}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <i className={s.icon}></i>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -65,19 +78,30 @@ export default function GlobalNav({ config, toggleTheme }) {
             <div id="mobileMenu" className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
                 <div id="mobile-links" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     {navbar.items.map((item, index) => (
-                        <a
+                        <div
                             key={index}
-                            href={item.href}
-                            onClick={toggleMenu}
+                            onClick={() => {
+                                toggleMenu();
+                                setTimeout(() => {
+                                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                                }, 10);
+                            }}
                             className={activeSection === item.href.substring(1) ? 'active' : ''}
+                            style={{ cursor: 'pointer' }}
                         >
                             {item.label}
-                        </a>
+                        </div>
                     ))}
                 </div>
                 <div id="mobile-socials" className="mobile-socials">
                     {navbar.socials.map((s, index) => (
-                        <a key={index} href={s.url} target="_blank"><i className={s.icon}></i></a>
+                        <div
+                            key={index}
+                            onClick={() => window.open(s.url, '_blank')}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <i className={s.icon}></i>
+                        </div>
                     ))}
                 </div>
             </div>
