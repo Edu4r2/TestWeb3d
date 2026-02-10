@@ -3,18 +3,23 @@ import React, { useState, useEffect, useRef } from 'react';
 export default function Projects({ featured, config, children }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [prevSlide, setPrevSlide] = useState(0);
     const totalSlides = featured.length;
     const slideInterval = useRef(null);
 
     const nextSlide = () => {
+        setPrevSlide(currentSlide);
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
     };
 
-    const prevSlide = () => {
+    const previousSlide = () => {
+        setPrevSlide(currentSlide);
         setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
     };
 
     const goToSlide = (index) => {
+        if (index === currentSlide) return;
+        setPrevSlide(currentSlide);
         setCurrentSlide(index);
     };
 
@@ -69,10 +74,20 @@ export default function Projects({ featured, config, children }) {
                     ))}
                 </div>
 
-                <button className="carousel-btn prev-btn" onClick={prevSlide}><i className="fa-solid fa-chevron-left"></i></button>
+                <button className="carousel-btn prev-btn" onClick={previousSlide}><i className="fa-solid fa-chevron-left"></i></button>
                 <button className="carousel-btn next-btn" onClick={nextSlide}><i className="fa-solid fa-chevron-right"></i></button>
 
                 <div id="carousel-dots" className="carousel-indicators">
+                    {/* Neon Glider: Absolute pill that slides over dots with elastic worm animation */}
+                    <div
+                        className="indicator-glider"
+                        data-direction={currentSlide > prevSlide ? 'forward' : 'backward'}
+                        style={{
+                            transform: `translateX(${currentSlide * 27}px)`
+                        }}
+                    ></div>
+
+                    {/* Static track dots */}
                     {featured.map((_, i) => (
                         <div key={i} className={`dot ${i === currentSlide ? 'active' : ''}`} onClick={() => goToSlide(i)}></div>
                     ))}

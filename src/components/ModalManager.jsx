@@ -14,16 +14,26 @@ export default function ModalManager({ activeModalId, onClose, categories }) {
         }
     }, [activeModalId, category]);
 
-    // Handle Animation Entry
+    // Handle Animation Entry & Scroll Lock
     useEffect(() => {
         if (activeModalId) {
+            // Lock body scroll
+            document.body.style.overflow = 'hidden';
+
             // Slight delay to allow DOM paint before adding 'active' class for transition
             requestAnimationFrame(() => {
                 setIsVisible(true);
             });
         } else {
+            // Unlock body scroll
+            document.body.style.overflow = '';
             setIsVisible(false);
         }
+
+        // Cleanup function to ensure scroll is unlocked if component unmounts
+        return () => {
+            document.body.style.overflow = '';
+        };
     }, [activeModalId]);
 
     if (!category || !activeModalId) return null;
