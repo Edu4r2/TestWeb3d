@@ -83,7 +83,7 @@ export default function Projects({ featured, config, children }) {
                         className="indicator-glider"
                         data-direction={currentSlide > prevSlide ? 'forward' : 'backward'}
                         style={{
-                            transform: `translateX(${currentSlide * 27}px)`
+                            '--slide-position': `${currentSlide * 27}px`
                         }}
                     ></div>
 
