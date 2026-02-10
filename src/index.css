@@ -999,11 +999,15 @@ section {
 
 .modal-overlay.active .modal-content {
     transform: scale(1);
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Refuerzo del borde con la variable de acento */
 .modal-content {
     border: 0.5px solid var(--accent) !important;
+    z-index: 5001 !important;
+    opacity: 1;
 }
 
 /* Banner Redondeado */
