@@ -1,0 +1,209 @@
+{
+    "config": {
+        "typography": {
+            "font_import_url": "https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap",
+            "font_family": "'Rajdhani', sans-serif",
+            "hero_font_import_url": "https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap",
+            "hero_font_family": "'Orbitron', sans-serif"
+        },
+        "theme": {
+            "--bg-body": "#050505",
+            "--accent": "#d7a437",
+            "--text-main": "#ffffff",
+            "--text-muted": "#cccccc",
+            "--card-bg": "rgba(20, 20, 25, 0.9)",
+            "--nav-height": "80px",
+            "--border-radius": "12px"
+        }
+    },
+    "ui": {
+        "navbar": {
+            "logo_text": "Edu4rt",
+            "logo_img": "media/logo.png",
+            "items": [
+                {
+                    "label": "Inicio",
+                    "href": "#hero"
+                },
+                {
+                    "label": "Nosotros",
+                    "href": "#about"
+                },
+                {
+                    "label": "Catálogo",
+                    "href": "#products"
+                },
+                {
+                    "label": "Destacados",
+                    "href": "#projects"
+                }
+            ],
+            "socials": [
+                {
+                    "icon": "fa-brands fa-artstation",
+                    "url": "https://artstation.com"
+                },
+                {
+                    "icon": "fa-solid fa-store",
+                    "url": "https://www.fab.com/sellers/eduart4d"
+                }
+            ]
+        },
+        "hero": {
+            "video_src": "media/Hero.mp4",
+            "video_poster": "media/hero-poster.jpg",
+            "title": "CREA MUNDOS<br>SIN LÍMITES",
+            "description": "La colección definitiva de assets 3D optimizados para renderizado en tiempo real.",
+            "button_text": "Explorar Catálogo",
+            "button_link": "#products"
+        },
+        "about": {
+            "video_src": "media/about-card.mp4",
+            "video_poster": "media/C4D.jpg",
+            "background_image": "media/C4D.jpg",
+            "section_title": "El Estudio",
+            "headline": "Diseño Paramétrico",
+            "description": "Somos un equipo de desarrolladores y artistas 3D obsesionados con la calidad AAA. No solo creamos modelos; forjamos piezas optimizadas que cuentan historias.",
+            "est": "< EST. 2026 />"
+        },
+        "titles": {
+            "categories": "NUESTROS MODELOS PREMIUMS",
+            "featured": "Novedades & Retos"
+        },
+        "products_background": "media/BG_section01.png",
+        "projects_bg": "media/cyber.jpg",
+        "footer": "© 2026 Edu4rt Studios - Powered by 🤓Humans"
+    },
+    "categories": [
+        {
+            "id": "historical",
+            "img": "media/historic_card.png",
+            "title": "Histórico",
+            "description": "Armas, castillos y props medievales.",
+            "banner": "media/historic_card.png",
+            "tabs": [
+                {
+                    "id": "weapons",
+                    "label": "Armas",
+                    "items": [
+                        {
+                            "src": "media/cyber.jpg",
+                            "link": "#"
+                        },
+                        {
+                            "src": "media/hacha_guerra.jpg",
+                            "link": "#"
+                        }
+                    ]
+                },
+                {
+                    "id": "structures",
+                    "label": "Estructuras",
+                    "items": [
+                        {
+                            "src": "media/castillo_ruinas.jpg",
+                            "link": "#"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "modern",
+            "img": "media/modern_card.png",
+            "title": "Moderno",
+            "description": "Entornos urbanos y vehículos.",
+            "banner": "media/modern_card.png",
+            "tabs": [
+                {
+                    "id": "vehicles",
+                    "label": "Vehículos",
+                    "items": [
+                        {
+                            "src": "media/coche_policia.jpg",
+                            "link": "#"
+                        },
+                        {
+                            "src": "media/moto_futurista.jpg",
+                            "link": "#"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scifi",
+            "img": "media/scfi_card.png",
+            "title": "Sci-Fi",
+            "description": "Naves espaciales y bases lunares.",
+            "banner": "media/scfi_card.png",
+            "tabs": [
+                {
+                    "id": "drones",
+                    "label": "Drones",
+                    "items": [
+                        {
+                            "src": "media/items/scifi/drone002.png",
+                            "link": "https://www.cgtrader.com/3d-models/aircraft/military-aircraft/kamikaze-drone-4bab48aa-079e-4f1e-9975-7dbe18979999"
+                        },
+                        {
+                            "src": "media/items/scifi/drone003.png",
+                            "link": "https://www.cgtrader.com/3d-models/aircraft/military-aircraft/kamikaze-drone-4bab48aa-079e-4f1e-9975-7dbe18979999"
+                        }
+                    ]
+                },
+                {
+                    "id": "Mechas",
+                    "label": "Mechas",
+                    "items": [
+                        {
+                            "src": "media/items/mechas/mecha001.png",
+                            "link": "https://www.cgtrader.com/3d-models/character/sci-fi-character/akrab-dominion"
+                        },
+                        {
+                            "src": "media/items/scifi/drone003.png",
+                            "link": "#"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "featured": [
+        {
+            "img": "media/neon.jpg",
+            "title": "Better Together Challenge",
+            "description": "Usa assets gratuitos de Edu4rt y gana una suscripción anual. Crea una escena que cuente una historia de cooperación única.",
+            "btn_text": "Unirse al Reto",
+            "link": "#"
+        },
+        {
+            "img": "media/organic.jpg",
+            "title": "Pack Naturaleza Alien",
+            "description": "Más de 50 especies de flora bioluminiscente optimizada para Unreal Engine 5. Incluye texturas 4K y LODs automáticos.",
+            "btn_text": "Ver Detalles",
+            "link": "#"
+        },
+        {
+            "img": "media/cyber.jpg",
+            "title": "Cyberpunk Slums",
+            "description": "Kit modular completo para construir distritos bajos futuristas. Incluye interiores, props de calle y calcomanías.",
+            "btn_text": "Comprar Kit",
+            "link": "#"
+        },
+        {
+            "img": "media/redshift.jpg",
+            "title": "Vulnerable",
+            "description": "Colección de modelos 3D de personajes vulnerables y expresivos. Perfectos para narrativas emocionales en videojuegos y animación. Incluye rigging, morfos faciales y animaciones base.",
+            "btn_text": "Comprar Kit",
+            "link": "https://www.cgtrader.com/designers/hardtools"
+        },
+        {
+            "img": "media/redshift.jpg",
+            "title": "FABRIC",
+            "description": "Colección de modelos 3D de personajes vulnerables y expresivos. Perfectos para narrativas emocionales en videojuegos y animación. Incluye rigging, morfos faciales y animaciones base.",
+            "btn_text": "Comprar Kit",
+            "link": "https://www.cgtrader.com/designers/hardtools"
+        }
+    ]
+}
