@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 
 export default function ModalManager({ activeModalId, onClose, categories }) {
     const [activeTab, setActiveTab] = useState(null);
+    const [isVisible, setIsVisible] = useState(false); // Controls animation state
 
     const category = categories.find(c => c.id === activeModalId);
 
-    if (!category) return null;
+    // Reset tab when modal opens
+    useEffect(() => {
+        if (category && category.tabs && category.tabs.length > 0) {
+            setActiveTab(category.tabs[0].id);
+        }
+    }, [activeModalId, category]);
 
-    // Reset tab when modal opens (handled by key or effect usually, but here uncomplicated)
-    // Actually, we should set default tab.
+    // Handle Animation Entry
+    useEffect(() => {
+        if (activeModalId) {
+            // Slight delay to allow DOM paint before adding 'active' class for transition
+            requestAnimationFrame(() => {
+                setIsVisible(true);
+            });
+        } else {
+            setIsVisible(false);
+        }
+    }, [activeModalId]);
+
+    if (!category || !activeModalId) return null;
+
     const tabs = category.tabs || [];
     const currentTabId = activeTab || (tabs.length > 0 ? tabs[0].id : null);
 
@@ -16,13 +35,8 @@ export default function ModalManager({ activeModalId, onClose, categories }) {
         setActiveTab(tabId);
     };
 
-    // When modal changes, reset tab
-    React.useEffect(() => {
-        if (category && tabs.length > 0) setActiveTab(tabs[0].id);
-    }, [activeModalId]);
-
-    return (
-        <div className={`modal-overlay ${activeModalId ? 'active' : ''}`} onClick={onClose}>
+    const modalContent = (
+        <div className={`modal-overlay ${isVisible ? 'active' : ''}`} onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close-btn" onClick={onClose}><i className="fa-solid fa-xmark"></i></button>
                 <div className="modal-banner" style={{ backgroundImage: `url('${category.banner}')` }}>
@@ -57,4 +71,6 @@ export default function ModalManager({ activeModalId, onClose, categories }) {
             </div>
         </div>
     );
+
+    return ReactDOM.createPortal(modalContent, document.body);
 }
