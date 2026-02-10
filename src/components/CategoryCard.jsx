@@ -4,8 +4,10 @@ export default function CategoryCard({ category, index, onOpenModal }) {
     const [activating, setActivating] = useState(false);
 
     const handleClick = (e) => {
+        console.log('CategoryCard: Clicked', category.id);
         setActivating(true);
         setTimeout(() => {
+            console.log('CategoryCard: Opening modal', category.id);
             onOpenModal(category.id);
             setTimeout(() => { setActivating(false); }, 500);
         }, 350);

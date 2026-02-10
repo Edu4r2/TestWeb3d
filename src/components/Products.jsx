@@ -5,7 +5,7 @@ import CategoryCard from './CategoryCard';
 export default function Products({ config, categories, onOpenModal }) {
     return (
         <section id="products" style={{
-            backgroundImage: config.products_background ? `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('${config.products_background}')` : 'none',
+            backgroundImage: config.products_background ? `linear-gradient(var(--overlay-grad-mid), var(--overlay-grad-mid)), url('${config.products_background}')` : 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>

@@ -19,6 +19,7 @@ function App() {
         return savedTheme ? savedTheme : 'dark';
     });
     const [activeModalId, setActiveModalId] = useState(null);
+    console.log('App: activeModalId changed to:', activeModalId);
     const activeSection = useActiveSection();
 
     useEffect(() => {

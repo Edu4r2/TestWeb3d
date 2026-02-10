@@ -53,7 +53,8 @@ html {
     --card-solid: #ffffff;
     --border-color: rgba(0, 0, 0, 0.1);
     --overlay-grad-start: #eef2f5;
-    --overlay-grad-mid: rgba(255, 255, 255, 0.6);
+    --overlay-grad-mid: rgba(255, 255, 255, 0.9);
+    /* FIX: Restore 0.9 for contrast */
     --btn-glass-bg: rgba(0, 0, 0, 0.05);
     --btn-glass-border: rgba(0, 0, 0, 0.1);
     --btn-text-hover: #fff;
@@ -412,7 +413,7 @@ section {
 }
 
 #products {
-    background-image: linear-gradient(var(--overlay-grad-mid), var(--overlay-grad-mid)), url('/media/BG_section01.png');
+    background-image: linear-gradient(var(--overlay-grad-mid), var(--overlay-grad-mid)), url('media/BG_section01.png');
 }
 
 #projects {
@@ -464,7 +465,6 @@ section {
 }
 
 .hero-content h1 {
-    font-family: var(--hero-font);
     font-size: clamp(3.5rem, 8vw, 7rem);
     font-weight: 800;
     line-height: 1;
@@ -595,9 +595,18 @@ section {
 .about-est-minimal {
     font-family: monospace;
     color: var(--accent);
-    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
     margin-top: 20px;
-    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.about-est-minimal:hover {
+    background: var(--accent);
+    color: #000;
+    transform: scale(1.05);
 }
 
 
@@ -1202,16 +1211,6 @@ section {
     background-color: var(--text-main);
     height: 50px;
     box-shadow: 0 0 10px var(--border-color);
-}
-
-/* Force white indicators in Hero section (for Light Mode visibility on dark video) */
-.side-indicator.hero-mode .indicator-dot {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.side-indicator.hero-mode .indicator-dot.active {
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .reveal-up {
