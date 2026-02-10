@@ -18,7 +18,7 @@
     },
     "ui": {
         "navbar": {
-            "logo_text": "Edu4rt",
+            "logo_text": "Edu4rt Store",
             "logo_img": "media/logo.png",
             "items": [
                 {
@@ -30,11 +30,11 @@
                     "href": "#about"
                 },
                 {
-                    "label": "Catálogo",
+                    "label": "Tienda",
                     "href": "#products"
                 },
                 {
-                    "label": "Destacados",
+                    "label": "Showcase",
                     "href": "#projects"
                 }
             ],
@@ -44,64 +44,64 @@
                     "url": "https://artstation.com"
                 },
                 {
-                    "icon": "fa-solid fa-store",
-                    "url": "https://www.fab.com/sellers/eduart4d"
+                    "icon": "fa-brands fa-linkedin",
+                    "url": "https://linkedin.com"
                 }
             ]
         },
         "hero": {
             "video_src": "media/Hero.mp4",
             "video_poster": "media/hero-poster.jpg",
-            "title": "CREA MUNDOS<br>SIN LÍMITES",
-            "description": "La colección definitiva de assets 3D optimizados para renderizado en tiempo real.",
-            "button_text": "Explorar Catálogo",
+            "title": "ASSETS 3D<br>PARA PRODUCCIÓN",
+            "description": "Tienda de modelos 3D optimizados para videojuegos y cinemáticas. Desde ruinas antiguas hasta futuros distópicos, listos para tu motor.",
+            "button_text": "Ver Catálogo",
             "button_link": "#products"
         },
         "about": {
             "video_src": "media/about-card.mp4",
             "video_poster": "media/C4D.jpg",
             "background_image": "media/C4D.jpg",
-            "section_title": "El Estudio",
-            "headline": "Diseño Paramétrico",
-            "description": "Somos un equipo de desarrolladores y artistas 3D obsesionados con la calidad AAA. No solo creamos modelos; forjamos piezas optimizadas que cuentan historias.",
+            "section_title": "Edu4rt Store",
+            "headline": "Calidad AAA, Accesible",
+            "description": "Somos un estudio dedicado a la venta de assets 3D de alta fidelidad. Nuestro objetivo es proveer a desarrolladores y artistas de recursos premium (Historic, Modern, Sci-Fi) optimizados para Real-Time, ahorrando tiempo de producción sin sacrificar calidad.",
             "est": "< EST. 2026 />"
         },
         "titles": {
-            "categories": "NUESTROS MODELOS PREMIUMS",
-            "featured": "Novedades & Retos"
+            "categories": "CATÁLOGO POR ERAS",
+            "featured": "Showcase de Clientes"
         },
         "products_background": "media/BG_section01.png",
         "projects_bg": "media/cyber.jpg",
-        "footer": "© 2026 Edu4rt Studios - Powered by 🤓Humans"
+        "footer": "© 2026 Edu4rt 3D Store - Asset Production & Sales"
     },
     "categories": [
         {
-            "id": "historical",
+            "id": "historic",
             "img": "media/historic_card.png",
             "title": "Histórico",
-            "description": "Armas, castillos y props medievales.",
+            "description": "Arquitectura y artefactos de civilizaciones pasadas.",
             "banner": "media/historic_card.png",
             "tabs": [
                 {
-                    "id": "weapons",
-                    "label": "Armas",
+                    "id": "ruins",
+                    "label": "Ruinas y Arquitectura",
                     "items": [
                         {
-                            "src": "media/cyber.jpg",
-                            "link": "#"
-                        },
-                        {
-                            "src": "media/hacha_guerra.jpg",
+                            "title": "Ruinas del Norte",
+                            "price": "$45",
+                            "src": "media/historic_card.png",
                             "link": "#"
                         }
                     ]
                 },
                 {
-                    "id": "structures",
-                    "label": "Estructuras",
+                    "id": "artifacts",
+                    "label": "Artefactos",
                     "items": [
                         {
-                            "src": "media/castillo_ruinas.jpg",
+                            "title": "Escultura ZBrush",
+                            "price": "$30",
+                            "src": "media/zbrush.png",
                             "link": "#"
                         }
                     ]
@@ -112,7 +112,7 @@
             "id": "modern",
             "img": "media/modern_card.png",
             "title": "Moderno",
-            "description": "Entornos urbanos y vehículos.",
+            "description": "El mundo de hoy. Vehículos, armas y urbano.",
             "banner": "media/modern_card.png",
             "tabs": [
                 {
@@ -120,11 +120,21 @@
                     "label": "Vehículos",
                     "items": [
                         {
-                            "src": "media/coche_policia.jpg",
+                            "title": "Moto Sport 2077",
+                            "price": "$35",
+                            "src": "media/modern_card.png",
                             "link": "#"
-                        },
+                        }
+                    ]
+                },
+                {
+                    "id": "tech",
+                    "label": "Tecnología",
+                    "items": [
                         {
-                            "src": "media/moto_futurista.jpg",
+                            "title": "Render Técnico",
+                            "price": "$85",
+                            "src": "media/redshift.jpg",
                             "link": "#"
                         }
                     ]
@@ -135,34 +145,42 @@
             "id": "scifi",
             "img": "media/scfi_card.png",
             "title": "Sci-Fi",
-            "description": "Naves espaciales y bases lunares.",
+            "description": "Futuro lejano. Mechas, naves y cyberpunk.",
             "banner": "media/scfi_card.png",
             "tabs": [
                 {
-                    "id": "drones",
-                    "label": "Drones",
+                    "id": "cyberpunk",
+                    "label": "Cyberpunk",
                     "items": [
                         {
-                            "src": "media/items/scifi/drone002.png",
-                            "link": "https://www.cgtrader.com/3d-models/aircraft/military-aircraft/kamikaze-drone-4bab48aa-079e-4f1e-9975-7dbe18979999"
+                            "title": "Distrito Cyberpunk",
+                            "price": "$120",
+                            "src": "media/cyber.jpg",
+                            "link": "#"
                         },
                         {
-                            "src": "media/items/scifi/drone003.png",
-                            "link": "https://www.cgtrader.com/3d-models/aircraft/military-aircraft/kamikaze-drone-4bab48aa-079e-4f1e-9975-7dbe18979999"
+                            "title": "Dron de Asalto",
+                            "price": "$15",
+                            "src": "media/items/scifi/drone002.png",
+                            "link": "#"
                         }
                     ]
                 },
                 {
-                    "id": "Mechas",
-                    "label": "Mechas",
+                    "id": "mechas",
+                    "label": "Robótica Avanzada",
                     "items": [
                         {
+                            "title": "Mecha Escorpión",
+                            "price": "$60",
                             "src": "media/items/mechas/mecha001.png",
-                            "link": "https://www.cgtrader.com/3d-models/character/sci-fi-character/akrab-dominion"
+                            "link": "#"
                         },
                         {
+                            "title": "Dron Explorador",
+                            "price": "$25",
                             "src": "media/items/scifi/drone003.png",
-                            "link": "#"
+                            "link": "https://www.cgtrader.com/3d-models/military/other/exploration-drone"
                         }
                     ]
                 }
@@ -172,37 +190,30 @@
     "featured": [
         {
             "img": "media/neon.jpg",
-            "title": "Better Together Challenge",
-            "description": "Usa assets gratuitos de Edu4rt y gana una suscripción anual. Crea una escena que cuente una historia de cooperación única.",
-            "btn_text": "Unirse al Reto",
+            "title": "Project: Neon Horizon",
+            "description": "Uso de nuestros assets modulares 'Sci-Fi District' en producción indie.",
+            "btn_text": "Ver Assets",
             "link": "#"
         },
         {
             "img": "media/organic.jpg",
-            "title": "Pack Naturaleza Alien",
-            "description": "Más de 50 especies de flora bioluminiscente optimizada para Unreal Engine 5. Incluye texturas 4K y LODs automáticos.",
-            "btn_text": "Ver Detalles",
+            "title": "Bioluminesce VR",
+            "description": "Assets de flora alienígena optimizados para Quest 3.",
+            "btn_text": "Comprar Pack",
             "link": "#"
         },
         {
             "img": "media/cyber.jpg",
-            "title": "Cyberpunk Slums",
-            "description": "Kit modular completo para construir distritos bajos futuristas. Incluye interiores, props de calle y calcomanías.",
-            "btn_text": "Comprar Kit",
+            "title": "Industrial Sector 7",
+            "description": "Escena renderizada usando el kit 'Industrial Pipes & Vents'.",
+            "btn_text": "Ver Kit",
             "link": "#"
         },
         {
             "img": "media/redshift.jpg",
-            "title": "Vulnerable",
-            "description": "Colección de modelos 3D de personajes vulnerables y expresivos. Perfectos para narrativas emocionales en videojuegos y animación. Incluye rigging, morfos faciales y animaciones base.",
-            "btn_text": "Comprar Kit",
-            "link": "https://www.cgtrader.com/designers/hardtools"
-        },
-        {
-            "img": "media/redshift.jpg",
-            "title": "FABRIC",
-            "description": "Colección de modelos 3D de personajes vulnerables y expresivos. Perfectos para narrativas emocionales en videojuegos y animación. Incluye rigging, morfos faciales y animaciones base.",
-            "btn_text": "Comprar Kit",
+            "title": "Character: 'The Survivor'",
+            "description": "Modelo de personaje rigged listo para Unity y Unreal.",
+            "btn_text": "Comprar Modelo",
             "link": "https://www.cgtrader.com/designers/hardtools"
         }
     ]

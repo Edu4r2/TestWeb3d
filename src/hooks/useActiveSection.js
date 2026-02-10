@@ -4,8 +4,6 @@ export const useActiveSection = () => {
     const [activeSection, setActiveSection] = useState('');
 
     useEffect(() => {
-        const sections = document.querySelectorAll('section[id]');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -14,18 +12,26 @@ export const useActiveSection = () => {
             });
         }, {
             root: null,
-            rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of viewport
+            rootMargin: '-40% 0px -40% 0px', // More permissive: detects when section enters central 20%
             threshold: 0
         });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        const observeSections = () => {
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        };
+
+        // Initial observation
+        observeSections();
+
+        // Safety timeout for delayed content
+        const timeoutId = setTimeout(observeSections, 500);
 
         return () => {
-            sections.forEach(section => {
-                observer.unobserve(section);
-            });
+            observer.disconnect();
+            clearTimeout(timeoutId);
         };
     }, []);
 

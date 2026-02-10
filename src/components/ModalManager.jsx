@@ -71,7 +71,18 @@ export default function ModalManager({ activeModalId, onClose, categories }) {
                         {tab.items.length > 0
                             ? tab.items.map((item, i) => (
                                 <a key={i} href={item.link} target="_blank" className="gallery-item">
-                                    <img src={item.src} loading="lazy" alt="Asset" />
+                                    <div className="gallery-img-wrapper">
+                                        <img src={item.src} loading="lazy" alt={item.title || "Asset"} />
+                                        {item.price && (
+                                            <div className="item-price-tag">{item.price}</div>
+                                        )}
+                                    </div>
+                                    <div className="gallery-item-title">
+                                        {item.title}
+                                        {item.link && item.link.includes('cgtrader') && (
+                                            <i className="fa-solid fa-arrow-up-right-from-square" style={{ marginLeft: '8px', fontSize: '0.8em', opacity: 0.7 }}></i>
+                                        )}
+                                    </div>
                                 </a>
                             ))
                             : <p style={{ color: 'var(--text-muted)', textAlign: 'center', width: '100%' }}>Próximamente...</p>

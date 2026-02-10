@@ -965,104 +965,22 @@ section {
     box-shadow: none;
 }
 
-/* The Neon Glider - Elastic Worm Animation */
+/* The Neon Glider - JS-driven Worm Animation */
 .indicator-glider {
     position: absolute;
     top: 0;
     left: -6px;
-    /* Offset to center 24px glider over 12px dot */
     width: 24px;
     height: 12px;
     background: linear-gradient(90deg, var(--accent), #ffdb4d, var(--accent));
     background-size: 200% 100%;
     border-radius: 20px;
     box-shadow:
-        0 0 15px var(--accent),
-        0 0 30px rgba(255, 183, 0, 0.6),
-        0 0 45px rgba(255, 183, 0, 0.3);
+        0 0 12px var(--accent),
+        0 0 25px rgba(255, 183, 0, 0.5);
     z-index: 10;
-    /* Above dots */
-    will-change: transform;
-
-    /* Elastic spring-based transition with worm stretch effect */
-    transition:
-        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        background-position 0.6s ease,
-        box-shadow 0.4s ease;
-}
-
-/* Forward movement - stretch from left */
-.indicator-glider[data-direction="forward"] {
-    animation: wormStretchForward 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background-position: 100% 0;
-    box-shadow:
-        0 0 20px var(--accent),
-        0 0 40px rgba(255, 183, 0, 0.8),
-        0 0 60px rgba(255, 183, 0, 0.4);
-}
-
-/* Backward movement - stretch from right */
-.indicator-glider[data-direction="backward"] {
-    animation: wormStretchBackward 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background-position: 0% 0;
-    box-shadow:
-        0 0 20px var(--accent),
-        0 0 40px rgba(255, 183, 0, 0.8),
-        0 0 60px rgba(255, 183, 0, 0.4);
-}
-
-/* Worm stretch animation - forward direction */
-@keyframes wormStretchForward {
-    0% {
-        transform: scaleX(1);
-        transform-origin: left;
-        filter: brightness(1);
-    }
-
-    30% {
-        transform: scaleX(2.8);
-        transform-origin: left;
-        filter: brightness(1.3);
-    }
-
-    70% {
-        transform: scaleX(2.8);
-        transform-origin: right;
-        filter: brightness(1.3);
-    }
-
-    100% {
-        transform: scaleX(1);
-        transform-origin: right;
-        filter: brightness(1);
-    }
-}
-
-/* Worm stretch animation - backward direction */
-@keyframes wormStretchBackward {
-    0% {
-        transform: scaleX(1);
-        transform-origin: right;
-        filter: brightness(1);
-    }
-
-    30% {
-        transform: scaleX(2.8);
-        transform-origin: right;
-        filter: brightness(1.3);
-    }
-
-    70% {
-        transform: scaleX(2.8);
-        transform-origin: left;
-        filter: brightness(1.3);
-    }
-
-    100% {
-        transform: scaleX(1);
-        transform-origin: left;
-        filter: brightness(1);
-    }
+    will-change: left, width;
+    /* Transitions are set dynamically by JS */
 }
 
 
@@ -1244,14 +1162,22 @@ section {
 }
 
 .gallery-item {
-    aspect-ratio: 16/9;
-    /* Cinematic ratio */
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border-color);
     transition: 0.3s;
     background: var(--btn-glass-bg);
-    display: block;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Removed fixed aspect-ratio from here to let it grow with text */
+    text-decoration: none;
+}
+
+.gallery-img-wrapper {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
     position: relative;
 }
 
@@ -1262,14 +1188,50 @@ section {
     transition: 0.5s ease;
 }
 
+.gallery-item-title {
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
 .gallery-item:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.gallery-item:hover .gallery-item-title {
+    background: var(--accent);
+    color: #000;
+}
+
 .gallery-item:hover img {
     transform: scale(1.05);
+}
+
+.item-price-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent);
+    color: #000;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover .item-price-tag {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent);
 }
 
 /* Botón de Cerrar Flotante - STICKY */

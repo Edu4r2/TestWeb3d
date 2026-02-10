@@ -19,7 +19,6 @@ function App() {
         return savedTheme ? savedTheme : 'dark';
     });
     const [activeModalId, setActiveModalId] = useState(null);
-    console.log('App: activeModalId changed to:', activeModalId);
     const activeSection = useActiveSection();
 
     useEffect(() => {
@@ -78,12 +77,7 @@ function App() {
         document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
         return () => revealObserver.disconnect();
-    }); // Run on every render to catch new elements or assume structure is static? 
-    // Better: Run once or when location changes. Since content is static, once is fine.
-    // But verify if components mount later. Components mount on initial render.
-
-    // Side Indicators Logic (Simplified port)
-    // Replaced by useActiveSection hook
+    });
 
     const config = contentData.config;
     const ui = contentData.ui;
