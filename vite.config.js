@@ -10,13 +10,11 @@ export default defineConfig({
         obfuscatorPlugin({
             options: {
                 compact: true,
-                controlFlowFlattening: true,
-                controlFlowFlatteningThreshold: 0.5,
-                deadCodeInjection: true,
-                deadCodeInjectionThreshold: 0.3,
+                controlFlowFlattening: false,
+                deadCodeInjection: false,
                 identifierNamesGenerator: 'hexadecimal',
                 renameGlobals: false,
-                selfDefending: true,
+                selfDefending: false,
                 stringArray: true,
                 stringArrayEncoding: ['base64'],
                 stringArrayThreshold: 0.75,
