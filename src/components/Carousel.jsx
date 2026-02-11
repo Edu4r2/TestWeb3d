@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Projects({ featured, config, children }) {
+export default function Carousel({ items, config }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const totalSlides = featured.length;
+    const totalSlides = items.length;
     const slideInterval = useRef(null);
     const gliderRef = useRef(null);
     const isAnimatingRef = useRef(false);
@@ -109,7 +109,7 @@ export default function Projects({ featured, config, children }) {
             glider.style.left = (0 * STRIDE - GLIDER_OFFSET) + 'px';
             glider.style.width = GLIDER_REST_WIDTH + 'px';
         }
-    }, []);
+    }, [STRIDE, GLIDER_OFFSET, GLIDER_REST_WIDTH]); // Added deps
 
     useEffect(() => {
         const isUltraWide = window.matchMedia('(min-width: 2000px)').matches;
@@ -133,64 +133,58 @@ export default function Projects({ featured, config, children }) {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const projectsStyle = config.projects_bg
-        ? { '--projects-bg': `url('/${config.projects_bg}')` }
-        : {};
+    // Helper to determine if we should use custom bg style - logic shifted to parent or just applied if present
+    // But since this is a reusable component, let's keep it self-contained for the carousel part.
+    // The background logic in Projects.jsx applied to the SECTION. Here we might just be the track.
 
     return (
-        <section id="projects" className={config.projects_bg ? 'has-custom-bg' : ''} style={projectsStyle}>
-            <div className="carousel-container"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}>
+        <div className="carousel-container"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            style={{ position: 'relative', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
 
-                <div id="featured-track" className="carousel-track">
-                    {featured.map((item, index) => (
-                        <div key={index} className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}>
-                            <div className={`featured-split ${index % 2 !== 0 ? 'reversed' : ''}`}>
-                                <div className="featured-text-col">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                    <div
-                                        onClick={() => {
-                                            const target = item.link || '#';
-                                            if (target.startsWith('/')) {
-                                                navigate(target);
-                                                window.scrollTo(0, 0);
-                                            } else if (target.startsWith('#')) {
-                                                document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
-                                            } else {
-                                                window.open(target, '_blank');
-                                            }
-                                        }}
-                                        className="featured-btn"
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        {item.btn_text || 'Ver Más'}
-                                    </div>
-                                </div>
-                                <div className="featured-img-col">
-                                    <img src={item.img} alt={item.title} />
+            <div className="carousel-track">
+                {items.map((item, index) => (
+                    <div key={index} className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}>
+                        <div className={`featured-split ${index % 2 !== 0 ? 'reversed' : ''}`}>
+                            <div className="featured-text-col">
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                                <div
+                                    onClick={() => {
+                                        const target = item.link || '#';
+                                        if (target.startsWith('#')) {
+                                            document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+                                        } else {
+                                            window.open(target, '_blank');
+                                        }
+                                    }}
+                                    className="featured-btn"
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    {item.btn_text || 'Ver Más'}
                                 </div>
                             </div>
+                            <div className="featured-img-col">
+                                <img src={item.img} alt={item.title} />
+                            </div>
                         </div>
-                    ))}
-                </div>
-
-                <button className="carousel-btn prev-btn" onClick={previousSlide}><i className="fa-solid fa-chevron-left"></i></button>
-                <button className="carousel-btn next-btn" onClick={nextSlide}><i className="fa-solid fa-chevron-right"></i></button>
-
-                <div id="carousel-dots" className="carousel-indicators">
-                    {/* Neon Glider: JS-driven worm animation */}
-                    <div ref={gliderRef} className="indicator-glider"></div>
-
-                    {/* Static track dots */}
-                    {featured.map((_, i) => (
-                        <div key={i} className={`dot ${i === currentSlide ? 'active' : ''}`} onClick={() => goToSlide(i)}></div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
 
-            {children}
-        </section>
+            <button className="carousel-btn prev-btn" onClick={previousSlide}><i className="fa-solid fa-chevron-left"></i></button>
+            <button className="carousel-btn next-btn" onClick={nextSlide}><i className="fa-solid fa-chevron-right"></i></button>
+
+            <div id="carousel-dots" className="carousel-indicators">
+                {/* Neon Glider: JS-driven worm animation */}
+                <div ref={gliderRef} className="indicator-glider"></div>
+
+                {/* Static track dots */}
+                {items.map((_, i) => (
+                    <div key={i} className={`dot ${i === currentSlide ? 'active' : ''}`} onClick={() => goToSlide(i)}></div>
+                ))}
+            </div>
+        </div>
     );
 }

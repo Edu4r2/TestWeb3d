@@ -35,7 +35,7 @@
                 },
                 {
                     "label": "Showcase",
-                    "href": "#projects"
+                    "href": "/showcase"
                 }
             ],
             "socials": [
@@ -193,21 +193,21 @@
             "title": "Project: Neon Horizon",
             "description": "Uso de nuestros assets modulares 'Sci-Fi District' en producción indie.",
             "btn_text": "Ver Assets",
-            "link": "#"
+            "link": "/showcase"
         },
         {
             "img": "media/organic.jpg",
             "title": "Bioluminesce VR",
             "description": "Assets de flora alienígena optimizados para Quest 3.",
             "btn_text": "Comprar Pack",
-            "link": "#"
+            "link": "/showcase"
         },
         {
             "img": "media/cyber.jpg",
             "title": "Industrial Sector 7",
             "description": "Escena renderizada usando el kit 'Industrial Pipes & Vents'.",
             "btn_text": "Ver Kit",
-            "link": "#"
+            "link": "/showcase"
         },
         {
             "img": "media/redshift.jpg",
@@ -215,6 +215,48 @@
             "description": "Modelo de personaje rigged listo para Unity y Unreal.",
             "btn_text": "Comprar Modelo",
             "link": "https://www.cgtrader.com/designers/hardtools"
+        }
+    ],
+    "showcase": [
+        {
+            "id": "featured_projects",
+            "title": "Proyectos Destacados",
+            "items": [
+                {
+                    "img": "media/neon.jpg",
+                    "title": "Project: Neon Horizon",
+                    "description": "Uso de nuestros assets modulares 'Sci-Fi District' en producción indie.",
+                    "btn_text": "Ver Assets",
+                    "link": "#"
+                },
+                {
+                    "img": "media/organic.jpg",
+                    "title": "Bioluminesce VR",
+                    "description": "Assets de flora alienígena optimizados para Quest 3.",
+                    "btn_text": "Comprar Pack",
+                    "link": "#"
+                }
+            ]
+        },
+        {
+            "id": "community_showcase",
+            "title": "Galería de la Comunidad",
+            "items": [
+                {
+                    "img": "media/cyber.jpg",
+                    "title": "Industrial Sector 7",
+                    "description": "Escena renderizada usando el kit 'Industrial Pipes & Vents'.",
+                    "btn_text": "Ver Kit",
+                    "link": "#"
+                },
+                {
+                    "img": "media/redshift.jpg",
+                    "title": "Character: 'The Survivor'",
+                    "description": "Modelo de personaje rigged listo para Unity y Unreal.",
+                    "btn_text": "Comprar Modelo",
+                    "link": "https://www.cgtrader.com/designers/hardtools"
+                }
+            ]
         }
     ]
 }

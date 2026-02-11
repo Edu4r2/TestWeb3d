@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useActiveSection } from '../hooks/useActiveSection';
 
 export default function GlobalNav({ config, toggleTheme }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const activeSection = useActiveSection();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,13 +23,45 @@ export default function GlobalNav({ config, toggleTheme }) {
         document.body.classList.toggle('no-scroll', isOpen);
     };
 
+    const handleNavigation = (href) => {
+        if (href.startsWith('#')) {
+            if (location.pathname === '/') {
+                const element = document.querySelector(href);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Navigate to home with hash
+                navigate('/');
+                setTimeout(() => {
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        } else {
+            navigate(href);
+            window.scrollTo(0, 0);
+        }
+        setMobileMenuOpen(false);
+        document.body.classList.remove('no-scroll');
+    };
+
+    const isLinkActive = (item) => {
+        if (item.href.startsWith('#')) {
+            return location.pathname === '/' && activeSection === item.href.substring(1);
+        }
+        return location.pathname === item.href;
+    };
+
     const { navbar } = config;
 
     return (
         <>
-            <nav className={`global-nav ${scrolled ? 'scrolled' : ''}`}>
+            <nav className={`global-nav ${scrolled || location.pathname !== '/' ? 'scrolled' : ''}`}>
                 <div
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    onClick={() => handleNavigation('#hero')}
                     className="logo"
                     style={{ cursor: 'pointer' }}
                 >
@@ -39,10 +74,8 @@ export default function GlobalNav({ config, toggleTheme }) {
                         {navbar.items.map((item, index) => (
                             <span
                                 key={index}
-                                onClick={() => {
-                                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                                className={activeSection === item.href.substring(1) ? 'active' : ''}
+                                onClick={() => handleNavigation(item.href)}
+                                className={isLinkActive(item) ? 'active' : ''}
                                 style={{ cursor: 'pointer' }}
                             >
                                 {item.label}
@@ -80,13 +113,8 @@ export default function GlobalNav({ config, toggleTheme }) {
                     {navbar.items.map((item, index) => (
                         <div
                             key={index}
-                            onClick={() => {
-                                toggleMenu();
-                                setTimeout(() => {
-                                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                                }, 10);
-                            }}
-                            className={activeSection === item.href.substring(1) ? 'active' : ''}
+                            onClick={() => handleNavigation(item.href)}
+                            className={isLinkActive(item) ? 'active' : ''}
                             style={{ cursor: 'pointer' }}
                         >
                             {item.label}
