@@ -4,6 +4,7 @@ import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: '/TestWeb3d/',
     plugins: [
         react(),
         obfuscatorPlugin({
