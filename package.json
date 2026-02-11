@@ -1,11 +1,12 @@
 {
   "name": "web-stile-maxon-react",
+  "homepage": "https://edu4r2.github.io/TestWeb3d",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
