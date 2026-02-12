@@ -3,16 +3,17 @@ import GlobalNav from '../components/GlobalNav';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
 import contentData from '../data/content.json';
+import { useRevealObserver } from '../hooks/useRevealObserver';
 
 export default function ShowcasePage({ theme, toggleTheme }) {
     const config = contentData.config;
     const ui = contentData.ui;
     const showcaseData = contentData.showcase;
 
-    // Use projects background or default
     const backgroundStyle = ui.projects_bg
         ? { backgroundImage: `url('/${ui.projects_bg}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }
         : { backgroundColor: 'var(--bg-body)' };
+    useRevealObserver();
 
     return (
         <div className="showcase-page" style={{ minHeight: '100vh', ...backgroundStyle }}>

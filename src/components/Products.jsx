@@ -10,7 +10,7 @@ export default function Products({ config, categories, onOpenModal }) {
             backgroundPosition: 'center'
         }}>
 
-            {/* Canvas removed: ParticleCanvas is handled in App.jsx */}
+            {}
 
             <div className="content-wrapper">
                 <h2 id="cat-title" className="section-title reveal-up">{config.titles.categories}</h2>

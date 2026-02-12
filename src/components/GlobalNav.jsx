@@ -30,8 +30,7 @@ export default function GlobalNav({ config, toggleTheme }) {
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
-            } else {
-                // Navigate to home with hash
+            } else {
                 navigate('/');
                 setTimeout(() => {
                     const element = document.querySelector(href);

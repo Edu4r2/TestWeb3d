@@ -5,32 +5,22 @@ export default function ModalManager({ activeModalId, onClose, categories }) {
     const [activeTab, setActiveTab] = useState(null);
     const [isVisible, setIsVisible] = useState(false); // Controls animation state
 
-    const category = categories.find(c => c.id === activeModalId);
-
-    // Reset tab when modal opens
+    const category = categories.find(c => c.id === activeModalId);
     useEffect(() => {
         if (category && category.tabs && category.tabs.length > 0) {
             setActiveTab(category.tabs[0].id);
         }
-    }, [activeModalId, category]);
-
-    // Handle Animation Entry & Scroll Lock
+    }, [activeModalId, category]);
     useEffect(() => {
-        if (activeModalId) {
-            // Lock body scroll
-            document.body.style.overflow = 'hidden';
-
-            // Slight delay to allow DOM paint before adding 'active' class for transition
+        if (activeModalId) {
+            document.body.style.overflow = 'hidden';
             requestAnimationFrame(() => {
                 setIsVisible(true);
             });
-        } else {
-            // Unlock body scroll
+        } else {
             document.body.style.overflow = '';
             setIsVisible(false);
-        }
-
-        // Cleanup function to ensure scroll is unlocked if component unmounts
+        }
         return () => {
             document.body.style.overflow = '';
         };

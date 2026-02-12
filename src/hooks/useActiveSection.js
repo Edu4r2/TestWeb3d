@@ -21,12 +21,8 @@ export const useActiveSection = () => {
             sections.forEach(section => {
                 observer.observe(section);
             });
-        };
-
-        // Initial observation
-        observeSections();
-
-        // Safety timeout for delayed content
+        };
+        observeSections();
         const timeoutId = setTimeout(observeSections, 500);
 
         return () => {

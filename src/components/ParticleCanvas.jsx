@@ -62,9 +62,7 @@ export default function ParticleCanvas({ theme }) {
 
         function createParticles() {
             particlesArray = [];
-            let numberOfParticles = (canvas.width * canvas.height) / 9000;
-
-            // Theme based color
+            let numberOfParticles = (canvas.width * canvas.height) / 9000;
             const particleColor = theme === 'light' ? 'rgba(80, 80, 80, 0.4)' : 'rgba(200, 200, 200, 0.5)';
 
             for (let i = 0; i < numberOfParticles; i++) {
@@ -78,21 +76,12 @@ export default function ParticleCanvas({ theme }) {
         }
 
         function animate() {
-            animationFrameId = requestAnimationFrame(animate);
-            // Only animate if visible? logic in original used IntersectionObserver.
-            // For simplicity we animate always or add observer.
-            // Original: const particleObserver = new IntersectionObserver(...)
-            // I'll skip observer for now unless performance is bad, or rely on React cleanup.
-            // Actually, let's just clearRect and update.
+            animationFrameId = requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particlesArray.forEach(p => p.update());
-        }
-
-        // Init
+        }
         resize();
-        animate();
-
-        // Event Listeners
+        animate();
         window.addEventListener('resize', resize);
         section.addEventListener('mousemove', handleMouseMove);
         section.addEventListener('mouseleave', handleMouseLeave);

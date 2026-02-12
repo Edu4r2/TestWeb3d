@@ -3,7 +3,7 @@ import React from 'react';
 export default function About({ data, theme }) {
     return (
         <section id="about" style={{ position: 'relative' }}>
-            {/* Background Image with Overlay */}
+            {}
             {data.background_image && (
                 <>
                     <div className="video-bg" style={{
