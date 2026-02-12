@@ -35,7 +35,7 @@
                 },
                 {
                     "label": "Galería",
-                    "href": "/showcase"
+                    "href": "#showcase"
                 }
             ],
             "socials": [
