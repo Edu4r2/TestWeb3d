@@ -16,9 +16,14 @@ export function useExcelData() {
                 const arrayBuffer = await response.arrayBuffer();
                 const workbook = XLSX.read(arrayBuffer, { type: 'array' });
 
-                // Assume items are in the first sheet
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
+                // Find sheet with "Item" in the name, or default to the second sheet (index 1) if Instructions is first
+                // or just look for 'Items' specifically.
+                let sheetName = workbook.SheetNames.find(name => name.toLowerCase().includes('item'));
+                if (!sheetName) {
+                    // Fallback: If instructions is index 0, items might be index 1
+                    sheetName = workbook.SheetNames[1] || workbook.SheetNames[0];
+                }
+                const worksheet = workbook.Sheets[sheetName];
 
                 // Convert to JSON
                 const jsonData = XLSX.utils.sheet_to_json(worksheet);
@@ -44,37 +49,45 @@ function transformData(rows) {
     const categoryMap = new Map();
 
     rows.forEach(row => {
+        const catID = row['CategoryID'];
+        const tabID = row['TabID'];
+
+        if (!catID) return; // Skip empty rows
+
         // Create or get Category
-        if (!categoryMap.has(row.CategoryID)) {
-            categoryMap.set(row.CategoryID, {
-                id: row.CategoryID,
-                title: row.CategoryTitle,
-                description: row.CategoryDesc,
-                img: row.CategoryImg,
-                banner: row.CategoryBanner,
-                tabs: new Map() // Use map to deduplicate tabs
+        if (!categoryMap.has(catID)) {
+            categoryMap.set(catID, {
+                id: catID,
+                title: row['CategoryTitle (Ref)'] || catID,
+                description: row['CategoryDesc'] || '',
+                img: row['CategoryImg'] || row['ItemImage'] || '',
+                banner: row['CategoryBanner'] || '',
+                tabs: new Map()
             });
         }
-        const category = categoryMap.get(row.CategoryID);
+        const category = categoryMap.get(catID);
 
         // Create or get Tab
-        if (!category.tabs.has(row.TabID)) {
-            category.tabs.set(row.TabID, {
-                id: row.TabID,
-                label: row.TabLabel,
+        if (!category.tabs.has(tabID)) {
+            category.tabs.set(tabID, {
+                id: tabID,
+                label: row['TabLabel (Ref)'] || tabID,
                 items: []
             });
         }
-        const tab = category.tabs.get(row.TabID);
+        const tab = category.tabs.get(tabID);
 
         // Add Item
-        tab.items.push({
-            title: row.ItemTitle,
-            price: row.ItemPrice,
-            src: row.ItemImage,
-            link: row.ItemLink,
-            description: row.ItemDescription
-        });
+        const itemTitle = row['ItemTitle'];
+        if (itemTitle) {
+            tab.items.push({
+                title: itemTitle,
+                price: row['ItemPrice'],
+                src: row['ItemImage'],
+                link: row['ItemLink'],
+                description: row['ItemDescription'] || ''
+            });
+        }
     });
 
     // Convert Maps to Arrays

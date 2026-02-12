@@ -23,7 +23,11 @@ export default function About({ data, theme }) {
             <div className="about-minimal-wrapper reveal-up" style={{ position: 'relative', zIndex: 2 }}>
 
                 <div className="about-header">
-                    <i className="fa-solid fa-code about-icon-minimal"></i>
+                    <div className="about-logo-wrapper">
+                        <img src="media/logoW.png" alt="Edu4rt Store Logo" className="about-logo glitch-base" />
+                        <img src="media/logoW.png" aria-hidden="true" className="about-logo glitch-layer layer-1" />
+                        <img src="media/logoW.png" aria-hidden="true" className="about-logo glitch-layer layer-2" />
+                    </div>
                     <h2 id="about-title" className="section-title-minimal">{data.section_title}</h2>
                 </div>
 

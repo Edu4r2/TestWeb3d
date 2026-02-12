@@ -569,11 +569,119 @@ section {
     gap: 15px;
 }
 
-.about-icon-minimal {
-    font-size: 3.5rem;
-    color: var(--accent);
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 15px var(--accent));
+.about-logo-wrapper {
+    position: relative;
+    width: 160px;
+    height: auto;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.about-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    mix-blend-mode: hard-light;
+}
+
+.layer-1 {
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.layer-2 {
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    10% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -1px);
+    }
+
+    20% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    30% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(1px, -2px);
+    }
+
+    40% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    50% {
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(1px, 2px);
+    }
+
+    60% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translate(-2px, -1px);
+    }
+
+    100% {
+        clip-path: inset(15% 0 70% 0);
+        transform: translate(2px, 1px);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -1px);
+    }
+
+    10% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    20% {
+        clip-path: inset(30% 0 20% 0);
+        transform: translate(1px, 1px);
+    }
+
+    30% {
+        clip-path: inset(15% 0 80% 0);
+        transform: translate(-1px, -2px);
+    }
+
+    40% {
+        clip-path: inset(55% 0 10% 0);
+        transform: translate(2px, 1px);
+    }
+
+    50% {
+        clip-path: inset(40% 0 30% 0);
+        transform: translate(-2px, -1px);
+    }
+
+    60% {
+        clip-path: inset(70% 0 15% 0);
+        transform: translate(1px, 2px);
+    }
+
+    100% {
+        clip-path: inset(25% 0 50% 0);
+        transform: translate(-1px, 1px);
+    }
 }
 
 .section-title-minimal {
@@ -1835,8 +1943,119 @@ section {
         font-size: 0.9rem !important;
     }
 
-    .featured-split .featured-img-col::after,
     .featured-split.reversed .featured-img-col::after {
         display: none !important;
+    }
+}
+
+/* Mobile optimizations for About section */
+@media (max-width: 768px) {
+    .about-minimal-wrapper {
+        padding: 40px 10px;
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Logo size */
+    .about-logo-wrapper {
+        width: 125px;
+        margin-bottom: 10px;
+    }
+
+    /* Typography sizing */
+    .section-title-minimal {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin-bottom: 5px;
+    }
+
+    .about-headline-minimal {
+        font-size: 2.3rem;
+        /* Increased from 2rem */
+        line-height: 1.1;
+        margin-bottom: 15px;
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .about-text-minimal {
+        font-size: 1.3rem;
+        /* Increased from 1.05rem */
+        line-height: 1.5;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5px;
+    }
+
+    .about-est-minimal {
+        font-size: 0.95rem;
+        /* Increased from 0.85rem */
+        margin-top: 25px;
+        letter-spacing: 2px;
+    }
+
+    /* Spacing reduction */
+    .about-divider {
+        margin: 20px 0;
+        width: 50px;
+    }
+
+    .trusted-stores-container {
+        margin-top: 35px;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .trusted-title {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+    }
+
+    .trusted-logos {
+        gap: 30px;
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .store-logo,
+    .logo-svg {
+        max-height: 32px;
+        width: auto;
+    }
+}
+
+/* Specific optimization for Fold/Narrow devices */
+@media (max-width: 380px) {
+    .about-minimal-wrapper {
+        padding: 20px 10px;
+        gap: 15px;
+    }
+
+    .about-logo-wrapper {
+        width: 100px;
+        margin-bottom: 5px;
+    }
+
+    .about-headline-minimal {
+        font-size: 1.9rem;
+        /* Increased from 1.6rem */
+        margin-bottom: 10px;
+    }
+
+    .about-text-minimal {
+        font-size: 1.15rem;
+        /* Increased from 0.95rem */
+    }
+
+    .trusted-stores-container {
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .trusted-logos {
+        gap: 15px;
+        margin-top: 10px;
     }
 }
