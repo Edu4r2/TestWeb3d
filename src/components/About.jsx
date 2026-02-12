@@ -3,7 +3,7 @@ import React from 'react';
 export default function About({ data, theme }) {
     return (
         <section id="about" style={{ position: 'relative' }}>
-            {}
+            { }
             {data.background_image && (
                 <>
                     <div className="video-bg" style={{
@@ -34,6 +34,20 @@ export default function About({ data, theme }) {
                 <p id="about-desc" className="about-text-minimal">{data.description}</p>
 
                 <div id="about-est" className="about-est-minimal" dangerouslySetInnerHTML={{ __html: data.est }}></div>
+
+                {data.trusted_stores && (
+                    <div className="trusted-stores-container">
+                        <p className="trusted-title">{data.trusted_title}</p>
+                        <div className="trusted-logos">
+                            {data.trusted_stores.map((store, index) => (
+                                <a key={index} href={store.link} target="_blank" rel="noopener noreferrer" className="store-link" style={{ animationDelay: `${index * 0.2}s` }}>
+                                    <img src={store.img} alt={store.name} className={`store-logo ${store.img.endsWith('.svg') ? 'logo-svg' : ''}`} />
+                                    <span className="store-tooltip">{store.name}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </section>
     );

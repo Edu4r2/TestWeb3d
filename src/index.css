@@ -604,8 +604,8 @@ section {
 }
 
 .about-text-minimal {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.5rem;
+    line-height: 1.2;
     color: var(--text-main);
     max-width: 700px;
     opacity: 0.9;
@@ -614,18 +614,102 @@ section {
 .about-est-minimal {
     font-family: monospace;
     color: var(--accent);
-    border: 1px solid var(--border-color);
-    padding: 8px 20px;
-    border-radius: 50px;
     font-size: 0.9rem;
     margin-top: 20px;
-    transition: 0.3s;
 }
 
-.about-est-minimal:hover {
-    background: var(--accent);
-    color: #000;
-    transform: scale(1.05);
+.trusted-stores-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.trusted-title {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.trusted-logos {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.store-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+.store-logo {
+    height: 35px;
+    width: auto;
+    opacity: 0.6;
+    transition: 0.3s;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+.store-link:hover .store-logo {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.logo-svg {
+    filter: grayscale(100%) invert(1) brightness(2);
+}
+
+.store-link:hover .logo-svg {
+    filter: invert(1) brightness(2);
+}
+
+.store-tooltip {
+    position: absolute;
+    bottom: -35px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.store-link:hover .store-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatLogo {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 
@@ -1413,6 +1497,10 @@ section {
 
     section {
         padding: 100px 20px;
+    }
+
+    .logo span {
+        font-size: 1.1rem !important;
     }
 
     .grid {

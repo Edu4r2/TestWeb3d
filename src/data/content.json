@@ -60,133 +60,39 @@
         "about": {
             "video_src": "media/about-card.mp4",
             "video_poster": "media/C4D.jpg",
-            "background_image": "media/C4D.jpg",
+            "background_image": "media/HubStorePortade.jpg",
             "section_title": "Edu4rt Store",
             "headline": "Calidad AAA, Accesible",
             "description": "Somos un estudio dedicado a la venta de assets 3D de alta fidelidad. Nuestro objetivo es proveer a desarrolladores y artistas de recursos premium (Historic, Modern, Sci-Fi) optimizados para Real-Time, ahorrando tiempo de producción sin sacrificar calidad.",
-            "est": "< EST. 2026 />"
+            "est": "< EST. 2026 />",
+            "trusted_title": "Estamos en las tiendas más populares",
+            "trusted_stores": [
+                {
+                    "name": "Fab",
+                    "img": "media/Fab-Logo-Black.svg",
+                    "link": "https://www.fab.com"
+                },
+                {
+                    "name": "TurboSquid",
+                    "img": "media/turbosquid-dark-logo.svg",
+                    "link": "https://www.turbosquid.com"
+                },
+                {
+                    "name": "CGTrader",
+                    "img": "media/Cgtrader.png",
+                    "link": "https://www.cgtrader.com"
+                }
+            ]
         },
         "titles": {
             "categories": "CATÁLOGO POR ERAS",
             "featured": "Showcase de Clientes"
         },
-        "products_background": "media/BG_section01.png",
+        "products_background": "media/mopsh.avif",
         "projects_bg": "media/cyber.jpg",
         "footer": "© 2026 Edu4rt 3D Store - Asset Production & Sales"
     },
-    "categories": [
-        {
-            "id": "historic",
-            "img": "media/historic_card.png",
-            "title": "Histórico",
-            "description": "Arquitectura y artefactos de civilizaciones pasadas.",
-            "banner": "media/historic_card.png",
-            "tabs": [
-                {
-                    "id": "ruins",
-                    "label": "Ruinas y Arquitectura",
-                    "items": [
-                        {
-                            "title": "Ruinas del Norte",
-                            "price": "$45",
-                            "src": "media/historic_card.png",
-                            "link": "#"
-                        }
-                    ]
-                },
-                {
-                    "id": "artifacts",
-                    "label": "Artefactos",
-                    "items": [
-                        {
-                            "title": "Escultura ZBrush",
-                            "price": "$30",
-                            "src": "media/zbrush.png",
-                            "link": "#"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "modern",
-            "img": "media/modern_card.png",
-            "title": "Moderno",
-            "description": "El mundo de hoy. Vehículos, armas y urbano.",
-            "banner": "media/modern_card.png",
-            "tabs": [
-                {
-                    "id": "vehicles",
-                    "label": "Vehículos",
-                    "items": [
-                        {
-                            "title": "Moto Sport 2077",
-                            "price": "$35",
-                            "src": "media/modern_card.png",
-                            "link": "#"
-                        }
-                    ]
-                },
-                {
-                    "id": "tech",
-                    "label": "Tecnología",
-                    "items": [
-                        {
-                            "title": "Render Técnico",
-                            "price": "$85",
-                            "src": "media/redshift.jpg",
-                            "link": "#"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "scifi",
-            "img": "media/scfi_card.png",
-            "title": "Sci-Fi",
-            "description": "Futuro lejano. Mechas, naves y cyberpunk.",
-            "banner": "media/scfi_card.png",
-            "tabs": [
-                {
-                    "id": "cyberpunk",
-                    "label": "Cyberpunk",
-                    "items": [
-                        {
-                            "title": "Distrito Cyberpunk",
-                            "price": "$120",
-                            "src": "media/cyber.jpg",
-                            "link": "#"
-                        },
-                        {
-                            "title": "Dron de Asalto",
-                            "price": "$15",
-                            "src": "media/items/scifi/drone002.png",
-                            "link": "#"
-                        }
-                    ]
-                },
-                {
-                    "id": "mechas",
-                    "label": "Robótica Avanzada",
-                    "items": [
-                        {
-                            "title": "Mecha Escorpión",
-                            "price": "$60",
-                            "src": "media/items/mechas/mecha001.png",
-                            "link": "#"
-                        },
-                        {
-                            "title": "Dron Explorador",
-                            "price": "$25",
-                            "src": "media/items/scifi/drone003.png",
-                            "link": "https://www.cgtrader.com/3d-models/military/other/exploration-drone"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
+    "categories": [],
     "featured": [
         {
             "img": "media/neon.jpg",

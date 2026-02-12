@@ -11,7 +11,10 @@ import ModalManager from './components/ModalManager';
 import Footer from './components/Footer';
 import ParticleCanvas from './components/ParticleCanvas';
 import ShowcasePage from './pages/ShowcasePage';
+import TopProgressBar from './components/TopProgressBar';
 import contentData from './data/content.json';
+import { useExcelData } from './hooks/useExcelData';
+
 
 import './index.css';
 
@@ -23,9 +26,9 @@ function ScrollToTop() {
     return null;
 }
 
-function Home({ activeModalId, setActiveModalId, activeSection }) {
+function Home({ activeModalId, setActiveModalId, activeSection, categories }) {
     const ui = contentData.ui;
-    const categories = contentData.categories;
+    // Categories passed as prop
     const featured = contentData.featured;
 
     return (
@@ -70,6 +73,7 @@ function App() {
     //    const [theme, setTheme] = useState('dark'); // Theme removed, default dark
     const [activeModalId, setActiveModalId] = useState(null);
     const activeSection = useActiveSection();
+    const { categories } = useExcelData();
 
     useEffect(() => {
         const { typography } = contentData.config;
@@ -106,7 +110,7 @@ function App() {
     //        }
     //        localStorage.setItem('theme', theme);
     //    }, [theme]);
-
+    //
     //    const toggleTheme = () => {
     //        setTheme(prev => prev === 'light' ? 'dark' : 'light');
     //    };
@@ -116,6 +120,7 @@ function App() {
 
     return (
         <Router basename="/TestWeb3d">
+            <TopProgressBar />
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={
@@ -123,6 +128,7 @@ function App() {
                         activeModalId={activeModalId}
                         setActiveModalId={setActiveModalId}
                         activeSection={activeSection}
+                        categories={categories}
                     />
                 } />
                 <Route path="/showcase" element={<ShowcasePage theme="dark" />} />
