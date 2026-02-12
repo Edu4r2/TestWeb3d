@@ -310,7 +310,8 @@ img {
     box-shadow: 0 0 10px var(--accent);
 }
 
-.nav-socials a:hover {
+.nav-socials a:hover,
+.nav-socials div:hover {
     color: var(--accent) !important;
     transform: translateY(-2px);
 }
@@ -336,7 +337,7 @@ img {
 
 .nav-socials {
     display: flex;
-    gap: 15px;
+    gap: 25px;
     border-left: 1px solid var(--border-color);
     padding-left: 20px;
 }
