@@ -1,28 +1,27 @@
-
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
-    
+
     -webkit-user-select: none;
     user-select: none;
 }
 
 :root {
-    
+
     --main-font: 'Rajdhani', sans-serif;
     --nav-height: 80px;
     --border-radius: 12px;
     --accent: #ffb700;
 
-    
+
     --bg-body: #050505;
     --text-main: #ffffff;
     --text-muted: #aaaaaa;
 
-    
+
     --nav-bg-scrolled: rgba(5, 5, 5, 0.95);
     --nav-text-scrolled: #ffffff;
-    
+
     --nav-border-scrolled: rgba(255, 255, 255, 0.1);
 
     --card-bg: rgba(30, 30, 30, 0.89);
@@ -39,30 +38,7 @@ html {
 }
 
 
-[data-theme="light"] {
-    --bg-body: #eef2f5;
-    --text-main: #1a1a1a;
-    --text-muted: #555555;
-
-    
-    --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
-    --nav-text-scrolled: #1a1a1a;
-    
-    --nav-border-scrolled: rgba(0, 0, 0, 0.1);
-
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --card-solid: #ffffff;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --overlay-grad-start: #eef2f5;
-    --overlay-grad-mid: rgba(255, 255, 255, 0.9);
-    
-    --btn-glass-bg: rgba(0, 0, 0, 0.05);
-    --btn-glass-border: rgba(0, 0, 0, 0.1);
-    --btn-text-hover: #fff;
-    --shadow-soft: rgba(0, 0, 0, 0.1);
-    --carousel-btn-bg: rgba(0, 0, 0, 0.2);
-    --footer-bg: rgba(255, 255, 255, 0.9);
-}
+/* Light theme overrides removed */
 
 * {
     margin: 0;
@@ -77,7 +53,7 @@ body {
     overflow-x: hidden;
     transition: background-color 0.4s ease, color 0.4s ease;
 
-    
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-user-select: none;
@@ -124,7 +100,7 @@ body.no-scroll {
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    
+
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -168,30 +144,7 @@ img {
     transform: rotate(15deg);
 }
 
-.theme-btn i {
-    position: absolute;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-.sun-icon {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.moon-icon {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-[data-theme="light"] .sun-icon {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-[data-theme="light"] .moon-icon {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Theme icons removed */
 
 
 
@@ -202,7 +155,7 @@ img {
     width: 100%;
     height: var(--nav-height);
     background: transparent;
-    
+
     backdrop-filter: none;
     z-index: 3000;
     display: flex;
@@ -216,7 +169,7 @@ img {
 
 .global-nav.scrolled {
     background: var(--nav-bg-scrolled);
-    
+
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--nav-border-scrolled);
 }
@@ -994,10 +947,10 @@ section {
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    
+
     z-index: 20;
     pointer-events: none;
-    
+
 }
 
 
@@ -1010,7 +963,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: none;
     pointer-events: auto;
-    
+
     transition: 0.3s;
 }
 
@@ -1023,7 +976,7 @@ section {
     background: transparent;
     border-color: transparent;
     width: 12px;
-    
+
     box-shadow: none;
 }
 
@@ -1042,7 +995,7 @@ section {
         0 0 25px rgba(255, 183, 0, 0.5);
     z-index: 10;
     will-change: left, width;
-    
+
 }
 
 
@@ -1075,18 +1028,18 @@ section {
     max-width: 900px;
     height: 85vh;
     background: var(--bg-body) !important;
-    
+
     color: var(--text-main);
-    
+
     padding: 0;
-    
+
     position: relative;
     display: flex;
     flex-direction: column;
     transform: scale(0.95);
-    
+
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
+
     overflow-y: auto;
     border-radius: 24px;
     background: var(--bg-body) !important;
@@ -1094,7 +1047,7 @@ section {
     box-shadow:
         0 0 30px rgba(215, 164, 55, 0.1),
         0 50px 100px -20px rgba(0, 0, 0, 0.6);
-    
+
 }
 
 .modal-overlay.active .modal-content {
@@ -1113,19 +1066,19 @@ section {
 .modal-banner {
     width: 100%;
     height: 300px;
-    
+
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     border-radius: 24px 24px 0 0;
     overflow: hidden;
     margin-bottom: 0;
     background-size: cover;
     background-position: center;
     flex-shrink: 0;
-    
+
 }
 
 .modal-banner-overlay {
@@ -1134,7 +1087,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    
+
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6) 60%, var(--bg-body) 100%);
     z-index: 1;
 }
@@ -1147,10 +1100,10 @@ section {
     border: none !important;
     padding: 0 !important;
     font-size: 2.5rem;
-    
+
     text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transform: translateY(0);
-    
+
 }
 
 
@@ -1158,7 +1111,7 @@ section {
     display: flex;
     gap: 15px;
     margin-top: -30px;
-    
+
     margin-bottom: 30px;
     padding: 0 30px;
     border-bottom: none;
@@ -1167,12 +1120,12 @@ section {
     z-index: 10;
     justify-content: center;
     flex-wrap: wrap;
-    
+
 }
 
 .tab-btn {
     background: rgba(var(--bg-card-rgb), 0.8);
-    
+
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
@@ -1205,7 +1158,7 @@ section {
 
 .tab-btn.active::after {
     display: none;
-    
+
 }
 
 
@@ -1231,7 +1184,7 @@ section {
     display: flex;
     flex-direction: column;
     position: relative;
-    
+
     text-decoration: none;
 }
 
@@ -1300,7 +1253,7 @@ section {
     position: absolute;
     top: 20px;
     left: 20px;
-    
+
     width: 40px;
     height: 40px;
     background: rgba(0, 0, 0, 0.5);
@@ -1471,7 +1424,7 @@ section {
         justify-content: center;
     }
 
-    
+
     #projects {
         height: 100vh;
         display: block;
@@ -1491,7 +1444,7 @@ section {
         width: 100%;
     }
 
-    
+
     .featured-text-col {
         height: 50%;
         width: 100%;
@@ -1758,7 +1711,7 @@ section {
         border-top-right-radius: 16px;
     }
 
-    
+
     .featured-text-col::after {
         content: '';
         position: absolute;

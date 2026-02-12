@@ -23,14 +23,14 @@ function ScrollToTop() {
     return null;
 }
 
-function Home({ theme, toggleTheme, activeModalId, setActiveModalId, activeSection }) {
+function Home({ activeModalId, setActiveModalId, activeSection }) {
     const ui = contentData.ui;
     const categories = contentData.categories;
     const featured = contentData.featured;
 
     return (
         <>
-            <GlobalNav config={contentData.ui} toggleTheme={toggleTheme} theme={theme} />
+            <GlobalNav config={contentData.ui} />
 
             <div id="side-indicators" className={`side-indicator ${activeSection === 'hero' ? 'hero-mode' : ''}`}>
                 {ui.navbar.items.map((item, index) => (
@@ -46,10 +46,10 @@ function Home({ theme, toggleTheme, activeModalId, setActiveModalId, activeSecti
             </div>
 
             <Hero data={ui.hero} />
-            <About data={ui.about} theme={theme} />
+            <About data={ui.about} theme="dark" />
 
             <div style={{ position: 'relative' }}>
-                <ParticleCanvas theme={theme} />
+                <ParticleCanvas theme="dark" />
                 <Products config={ui} categories={categories} onOpenModal={setActiveModalId} />
             </div>
 
@@ -67,10 +67,7 @@ function Home({ theme, toggleTheme, activeModalId, setActiveModalId, activeSecti
 }
 
 function App() {
-    const [theme, setTheme] = useState(() => {
-        const savedTheme = localStorage.getItem('theme');
-        return savedTheme ? savedTheme : 'dark';
-    });
+    //    const [theme, setTheme] = useState('dark'); // Theme removed, default dark
     const [activeModalId, setActiveModalId] = useState(null);
     const activeSection = useActiveSection();
 
@@ -101,18 +98,18 @@ function App() {
 
     }, []);
 
-    useEffect(() => {
-        if (theme === 'light') {
-            document.body.setAttribute('data-theme', 'light');
-        } else {
-            document.body.removeAttribute('data-theme');
-        }
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+    //    useEffect(() => {
+    //        if (theme === 'light') {
+    //            document.body.setAttribute('data-theme', 'light');
+    //        } else {
+    //            document.body.removeAttribute('data-theme');
+    //        }
+    //        localStorage.setItem('theme', theme);
+    //    }, [theme]);
 
-    const toggleTheme = () => {
-        setTheme(prev => prev === 'light' ? 'dark' : 'light');
-    };
+    //    const toggleTheme = () => {
+    //        setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    //    };
 
 
     useRevealObserver();
@@ -123,14 +120,12 @@ function App() {
             <Routes>
                 <Route path="/" element={
                     <Home
-                        theme={theme}
-                        toggleTheme={toggleTheme}
                         activeModalId={activeModalId}
                         setActiveModalId={setActiveModalId}
                         activeSection={activeSection}
                     />
                 } />
-                <Route path="/showcase" element={<ShowcasePage theme={theme} toggleTheme={toggleTheme} />} />
+                <Route path="/showcase" element={<ShowcasePage theme="dark" />} />
             </Routes>
         </Router>
     );

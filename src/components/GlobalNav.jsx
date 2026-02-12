@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useActiveSection } from '../hooks/useActiveSection';
 
-export default function GlobalNav({ config, toggleTheme }) {
+export default function GlobalNav({ config }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const activeSection = useActiveSection();
@@ -30,7 +30,8 @@ export default function GlobalNav({ config, toggleTheme }) {
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
-            } else {
+            } else {
+
                 navigate('/');
                 setTimeout(() => {
                     const element = document.querySelector(href);
@@ -82,10 +83,7 @@ export default function GlobalNav({ config, toggleTheme }) {
                         ))}
                     </div>
 
-                    <button id="theme-toggle" className="theme-btn" aria-label="Cambiar Tema" onClick={toggleTheme}>
-                        <i className="fa-solid fa-sun sun-icon"></i>
-                        <i className="fa-solid fa-moon moon-icon"></i>
-                    </button>
+                    {/* Theme toggle removed */}
 
                     <div id="nav-socials" className="nav-socials">
                         {navbar.socials.map((s, index) => (
