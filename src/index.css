@@ -1457,13 +1457,13 @@ section {
     }
 
     .featured-text-col h3 {
-        font-size: 1.6rem !important;
+        font-size: 2.2rem !important;
         margin-bottom: 10px;
         line-height: 1.1;
     }
 
     .featured-text-col p {
-        font-size: 0.8rem !important;
+        font-size: 1.1rem !important;
         margin-bottom: 20px;
         color: var(--text-muted);
         display: -webkit-box;
