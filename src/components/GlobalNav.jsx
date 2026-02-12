@@ -49,10 +49,19 @@ export default function GlobalNav({ config }) {
     };
 
     const isLinkActive = (item) => {
+        const currentPath = location.pathname.replace(/\/$/, '') || '/';
+        const itemPath = item.href.replace(/\/$/, '') || '/';
+
         if (item.href.startsWith('#')) {
-            return location.pathname === '/' && activeSection === item.href.substring(1);
+            return currentPath === '/' && activeSection === item.href.substring(1);
         }
-        return location.pathname === item.href;
+
+        if (item.href === '/showcase' && currentPath === '/' && activeSection === 'projects') {
+            return true;
+        }
+
+        // Match exact path or handle case where location.pathname might include basename unexpectedly
+        return currentPath === itemPath || currentPath === `/TestWeb3d${itemPath}`;
     };
 
     const { navbar } = config;

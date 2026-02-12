@@ -63,7 +63,19 @@ export default function Projects({ featured, config, children }) {
                                     </div>
                                 </div>
                                 <div className="featured-img-col">
-                                    <img src={item.img} alt={item.title} />
+                                    {item.video ? (
+                                        <video
+                                            src={item.video}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            className="featured-video"
+                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        />
+                                    ) : (
+                                        <img src={item.img} alt={item.title} />
+                                    )}
                                 </div>
                             </div>
                         </div>

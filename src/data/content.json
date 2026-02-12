@@ -34,7 +34,7 @@
                     "href": "#products"
                 },
                 {
-                    "label": "Showcase",
+                    "label": "Galería",
                     "href": "/showcase"
                 }
             ],
@@ -63,7 +63,7 @@
             "background_image": "media/HubStorePortade.jpg",
             "section_title": "Edu4rt Store",
             "headline": "Calidad AAA, Accesible",
-            "description": "Somos un estudio dedicado a la venta de assets 3D de alta fidelidad. Nuestro objetivo es proveer a desarrolladores y artistas de recursos premium (Historic, Modern, Sci-Fi) optimizados para Real-Time, ahorrando tiempo de producción sin sacrificar calidad.",
+            "description": "Somos un estudio dedicado a la venta de assets 3D de alta fidelidad. Nuestro objetivo es proveer a desarrolladores y artistas de recursos premium optimizados para Real-Time, ahorrando tiempo de producción sin sacrificar calidad.",
             "est": "< EST. 2026 />",
             "trusted_title": "Estamos en las tiendas más populares",
             "trusted_stores": [
@@ -86,24 +86,40 @@
         },
         "titles": {
             "categories": "EXPLORA NUESTROS MODELOS",
-            "featured": "Showcase de Clientes"
+            "featured": "Muestra de Proyectos"
         },
         "products_background": "media/mopsh.avif",
         "projects_bg": "media/cyber.jpg",
         "footer": "© 2026 Edu4rt 3D Store - Asset Production & Sales"
     },
-    "categories": [],
+    "categories": [
+        {
+            "id": "historic",
+            "img": "media/historic.jpg",
+            "banner": "media/historic.jpg"
+        },
+        {
+            "id": "modern",
+            "img": "media/modern.jpg",
+            "banner": "media/modern.jpg"
+        },
+        {
+            "id": "scifi",
+            "img": "media/scifi.avif",
+            "banner": "media/scifi.avif"
+        }
+    ],
     "featured": [
         {
-            "img": "media/neon.jpg",
-            "title": "Project: Neon Horizon",
-            "description": "Uso de nuestros assets modulares 'Sci-Fi District' en producción indie.",
-            "btn_text": "Ver Assets",
+            "img": "media/build.avif",
+            "title": "WORKFLOW COMPLETO",
+            "description": "Nos movemos en la industria",
+            "btn_text": "sABER MÁS",
             "link": "/showcase"
         },
         {
-            "img": "media/organic.jpg",
-            "title": "Bioluminesce VR",
+            "video": "media/realism.mp4",
+            "title": "HYPEREALISMO",
             "description": "Assets de flora alienígena optimizados para Quest 3.",
             "btn_text": "Comprar Pack",
             "link": "/showcase"
@@ -123,15 +139,15 @@
             "link": "https://www.cgtrader.com/designers/hardtools"
         }
     ],
-    "showcase": [
+    "galeria": [
         {
-            "id": "featured_projects",
+            "id": "proyectos_destacados",
             "title": "Proyectos Destacados",
             "items": [
                 {
-                    "img": "media/neon.jpg",
-                    "title": "Project: Neon Horizon",
-                    "description": "Uso de nuestros assets modulares 'Sci-Fi District' en producción indie.",
+                    "img": "media/cyber.jpg",
+                    "title": "Destacado",
+                    "description": "Uso de nuestros assets modulares del 'Distrito Sci-Fi' en producciones indie.",
                     "btn_text": "Ver Assets",
                     "link": "#"
                 },
@@ -150,15 +166,15 @@
             "items": [
                 {
                     "img": "media/cyber.jpg",
-                    "title": "Industrial Sector 7",
-                    "description": "Escena renderizada usando el kit 'Industrial Pipes & Vents'.",
+                    "title": "Sector Industrial 7",
+                    "description": "Escena renderizada usando el kit de 'Tuberías y Conductos Industriales'.",
                     "btn_text": "Ver Kit",
                     "link": "#"
                 },
                 {
                     "img": "media/redshift.jpg",
-                    "title": "Character: 'The Survivor'",
-                    "description": "Modelo de personaje rigged listo para Unity y Unreal.",
+                    "title": "Personaje: 'El Sobreviviente'",
+                    "description": "Modelo de personaje con rigging completo, listo para Unity y Unreal Engine.",
                     "btn_text": "Comprar Modelo",
                     "link": "https://www.cgtrader.com/designers/hardtools"
                 }

@@ -54,14 +54,17 @@ function transformData(rows) {
 
         if (!catID) return; // Skip empty rows
 
+        const categoryConfig = contentData.categories.find(c => c.id === catID);
+
         // Create or get Category
         if (!categoryMap.has(catID)) {
             categoryMap.set(catID, {
                 id: catID,
                 title: row['CategoryTitle (Ref)'] || catID,
                 description: row['CategoryDesc'] || '',
-                img: row['CategoryImg'] || row['ItemImage'] || '',
-                banner: row['CategoryBanner'] || '',
+                // Prioritize JSON config for images/banners
+                img: (categoryConfig && categoryConfig.img) || row['CategoryImg'] || row['ItemImage'] || '',
+                banner: (categoryConfig && categoryConfig.banner) || row['CategoryBanner'] || '',
                 tabs: new Map()
             });
         }
